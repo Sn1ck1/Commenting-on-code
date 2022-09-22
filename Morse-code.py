@@ -48,26 +48,26 @@ morseCode = {'a': '.-',
 morseCodeReverse = {}
 
 for key in morseCode.keys():
-    morseCodeReverse[morseCode[key]] = key
+    morseCodeReverse[morseCode[key]] = key # laver en omvendt dictionary
 
 def translate(letter, code):
     letter = letter.lower()
 
     if letter in code.keys():
-        return code[letter]
+        return code[letter] # returnere tilsvarende karaktere til et bogstav
     return '?'
 
 def encodeMessage(message, code):
     output = ''
     for letter in message:
-        output += '{}/'.format(translate(letter, code))
+        output += '{}/'.format(translate(letter, code)) # Formatere karakterene til morse kode
     output += '/'
     return output
 
 def decodeMessage(message, code):
     decoded = ''
     for sign in message.split('/'):
-        decoded += translate(sign, code)
+        decoded += translate(sign, code) # Formatere det til det alfabetiske karakter
     return decoded.strip()
 
 if __name__ == '__main__':
@@ -76,5 +76,5 @@ if __name__ == '__main__':
     print(tilMorse)
     fraMorse = decodeMessage(tilMorse, morseCodeReverse)
     print(fraMorse)
-    if original.lower() == fraMorse.lower():
+    if original.lower() == fraMorse.lower(): # checker om encoding og decoding er sket korrekt.
         print('Programmet virker')
