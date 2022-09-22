@@ -50,21 +50,21 @@ morseCodeReverse = {}
 for key in morseCode.keys():
     morseCodeReverse[morseCode[key]] = key # Laver en omvendt dictionry af morseCode
 
-def translate(letter, code):
+def translate(letter, code): # Funktion til at oversætte hver karakter til eller fra morse. Tager et bogstav og dictionary alt efter om det er til eller fra
     letter = letter.lower()
 
     if letter in code.keys():
         return code[letter] # Returnerer hver bogstavt bogstavs tilsvarende karakter.
     return '?'
 
-def encodeMessage(message, code):
+def encodeMessage(message, code): # Funktion til at encode og returnere en hel streng til morse. Tager en string og dit morsekode sæt
     output = ''
     for letter in message:
         output += '{}/'.format(translate(letter, code)) # Formatterer hver oversat karakter i "message" til morse
     output += '/'
     return output
 
-def decodeMessage(message, code):
+def decodeMessage(message, code): # Funktion til at decode og returnere en hel string fra morse. Tager en string og dit omvendte morse sæt
     decoded = ''
     for sign in message.split('/'):
         decoded += translate(sign, code) # Formatterer hver morse tegn til dets alfabetiske karakter
